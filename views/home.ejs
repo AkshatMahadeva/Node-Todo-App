@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+
+    <div class="container">
+        <img src="banner.png" alt="todo">
+
+    </div>
+   
+    <div class="box">
+        <div class="item heading" style="justify-content: center;"><h1>Create New List</h1></div>
+    <form class="form" method="post">
+        <input type="text" name="list" placeholder="create new list" required>
+        <button class="button" type="submit">+</button>
+    </form>
+    <% for(let i = 0; i<lists.length; i++){ %>
+       <div class="item"><a href="/<%=lists[i].id%>"><p style="font-weight: bold;color: #F17A11; text-transform: uppercase; letter-spacing: 1px;"><%= lists[i].name %></p></a><form class="inline" action="/list/<%=lists[i].id%>/delete" method="post"><button type="submit"><i class="fa fa-trash-o" style="font-size:25px"></i></button></form></div>
+    <%}%>
+    </div>
+    <footer>copyright © 2022 <a href="https://www.codewitham.com/" style="color:rgb(68, 66, 66);">codewitham</a></footer>
+</body>
+</html>

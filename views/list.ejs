@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=list.name%></title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+    <body>
+    
+        <a href="/"><button class="back"><i class="fa fa-arrow-left"></i> back</button></a>
+    <div class="box">
+    <%if(list){%>
+        <div class="item heading"><h1><%= list.name %></h1> <form class="inline" action="/list/<%=list.id%>/delete" method="post"><button type="submit"><i class="fa fa-trash-o" style="font-size:25px"></i></button></form></div>
+        <form class="form" method="post" action="/<%=list.id%>/add">
+            <input type="text" name="item" placeholder="add item" required>
+            <button class="button"  type="submit">+</button>
+        </form>
+        <%for(let i = 0; i<list.items.length; i++){%>
+            <div class="item">
+                <form method="post" action="/<%=list.id%>/delete" > 
+                    <input type="checkbox" name="check" value="<%=list.id%>" onchange="this.form.submit()"></input>
+                    <input type="hidden" name="itemId" value="<%=list.items[i].id%>"></input>
+                </form> 
+                <p><%=list.items[i].title%></p>
+            </div>
+        <%}%>
+    <%}%>
+</div>
+
+</body>
+</html>
