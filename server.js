@@ -18,9 +18,13 @@ mongoose.connect("mongodb+srv://am:Anubhav2021@cluster0.m0abvpd.mongodb.net/?ret
     }
 });
 
+let port = process.env.PORT;
+if(port == null || port == ""){
+    port = 3000;
+}
 
-app.listen(3000, ()=>{
-    console.log("App is running on port 3000.");
+app.listen(port, ()=>{
+    console.log("App is running successfully.");
 });
 
 const itemShema = {
